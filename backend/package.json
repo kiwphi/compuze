@@ -1,0 +1,27 @@
+{
+    "name": "compuze-backend",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "A platform to facilitate buying and selling used computer parts",
+    "main": "src/app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": " nodemon src/app.js",
+        "start": "npm run dev"
+    },
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "cookie-parser": "^1.4.6",
+        "express": "^4.17.1",
+        "jsonwebtoken": "^8.5.1",
+        "knex": "^1.0.4",
+        "multer": "^1.4.5-lts.1",
+        "mysql2": "^2.3.0",
+        "nodemailer": "^6.7.8",
+        "sharp": "^0.31.0",
+        "validator": "^13.6.0"
+    },
+    "devDependencies": {
+        "dotenv": "^10.0.0"
+    }
+}

@@ -1,0 +1,421 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#__next {
+  width: 70%;
+  margin: auto;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+/* Navigation */
+#navigation {
+  background-color: lightsteelblue;
+  border-radius: 0.3rem;
+  text-align: center;
+}
+
+#navigation ul {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#navigation li {
+  margin: 1rem;
+  list-style: none;
+}
+
+#navigation .active {
+  font-weight: bold;
+}
+
+/* Item Details*/
+
+.item-details-content {
+  margin: 1rem;
+}
+
+.no-margin-header h2 {
+  margin-bottom: 0;
+}
+
+.item-details-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 1rem;
+}
+
+.item-first-row {
+  padding: 0.7rem;
+  background-color: lightsteelblue;
+  border-radius: 0.3rem;
+  margin-bottom: 0.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-second-row {
+  display: flex;
+  justify-content: space-between;
+  background-color: lightblue;
+  border-radius: 0.3rem;
+  padding: 0.7rem;
+  align-items: center;
+}
+
+.item-description p {
+  margin: 1rem;
+}
+
+.item-description h3 {
+  margin-bottom: 0;
+}
+
+.price {
+  font-size: 1.75rem;
+}
+
+/* Comment Section */
+.comment-section {
+  margin: 1rem;
+}
+
+.comment-row {
+  display: flex;
+  justify-content: space-between;
+  background-color: lightgray;
+  padding: 0.3rem 0.3rem 0.3rem 0;
+  border-radius: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.comment-author {
+  background-color: lightgreen;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+  font-weight: bold;
+}
+
+.comment-content {
+  margin: 0.3rem;
+}
+
+/* Buttons */
+
+.small-btn {
+  border-radius: 0.3rem;
+  border: 1.5px solid #000000;
+  cursor: pointer;
+  margin: 0 0.2rem;
+}
+
+.big-btn {
+  border-radius: 0.3rem;
+  border: 1.5px solid black;
+  padding: 0.3rem;
+  cursor: pointer;
+  margin: 0 0.2rem;
+}
+
+.filter-select-btn {
+  background-color: whitesmoke;
+  border-radius: 0.3rem;
+  border: 1.5px solid black;
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
+  margin: 0.3rem;
+  width: 5.8rem;
+}
+
+.remove-filters-btn {
+  background-color: lightpink;
+  border-radius: 0.3rem;
+  border: 1.5px solid black;
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  font-weight: bold;
+}
+
+.page-change-button {
+  background-color: lightpink;
+  margin: 1rem;
+  border: none;
+  padding: 0.3rem 0.7rem 0.3rem 0.7rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.blue-btn {
+  background-color: lightskyblue;
+}
+
+.green-btn {
+  background-color: lightgreen;
+}
+
+.pink-btn {
+  background-color: lightpink;
+}
+
+.small-btn:hover,
+.big-btn:hover,
+.page-change-button:hover,
+.filter-select-btn:hover,
+.remove-filters-btn:hover,
+.toggle-filters-btn:hover {
+  background-color: lightgray;
+}
+
+.filter-select-btn.active {
+  background-color: lightgreen;
+}
+
+.small-btn:active,
+.big-btn:active,
+.page-change-button:active,
+.filter-select-btn:active,
+.remove-filters-btn:active,
+.toggle-filters-btn:active {
+  background-color: lightsteelblue;
+}
+
+/* Item List */
+
+.item-list-section {
+  margin: 1rem;
+}
+
+.item-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.item-picture {
+  border: 1px solid gray;
+  margin-right: 0.3rem;
+  border-radius: 0.7rem;
+  width: 6.7em;
+  height: 6.7em;
+  overflow: hidden;
+}
+
+.item-text {
+  flex: 1;
+}
+
+.all-filters {
+  padding: 0.5rem;
+}
+
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+  align-items: baseline;
+}
+
+#searchBox {
+  padding: 0.3rem;
+  margin: 0.3rem;
+  width: 100%;
+}
+
+/* Favorites */
+.favorites-section {
+  margin: 1rem;
+}
+
+/* Pagination */
+
+.pagination {
+  text-align: center;
+  margin: 2rem;
+}
+
+.page-number {
+  font-weight: bold;
+  background-color: lightpink;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 0.3rem;
+}
+
+/* User Details Page */
+
+.user-details-section {
+  margin: 1rem;
+}
+
+.user-details {
+  padding: 1rem;
+  background-color: lightgrey;
+  border-radius: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.user-details-row-2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-items-section {
+  margin: 1rem;
+}
+
+.user-details-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Inbox */
+
+.messages-section {
+  margin: 1rem;
+}
+
+.message-read-row {
+  display: flex;
+  background-color: lightgray;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  margin-top: 0.3rem;
+}
+
+.message-read-row:hover {
+  background-color: lightgreen;
+}
+
+.message-unread-row {
+  display: flex;
+  background-color: lightskyblue;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  font-weight: bold;
+  margin-top: 0.3rem;
+}
+
+.message-unread-row:hover {
+  background-color: lightgreen;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  font-size: 0.7rem;
+  background-color: lightgray;
+  border-radius: 0.3rem;
+  padding: 0.4rem;
+  margin: 0.3rem;
+}
+
+nav a:hover,
+nav a:focus {
+  background-color: lightgreen;
+}
+
+.message-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+}
+
+/* Footer */
+
+.footer {
+  padding: 1rem;
+  background-color: lightgoldenrodyellow;
+  border-radius: 0.3rem;
+}
+
+/* Form */
+
+form {
+  margin: 1rem;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form label {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.form .label-small {
+  font-size: 0.7rem;
+}
+
+.form select {
+  padding: 0.4rem;
+  width: 100%;
+}
+
+.form input {
+  padding: 0.4rem;
+  width: 100%;
+}
+
+.form textarea {
+  padding: 0.4rem;
+  width: 100%;
+  resize: none;
+}
+
+input {
+  margin: 0.2rem;
+}
+
+.item-image-upload {
+  height: 100px;
+  width: 100px;
+  position: relative;
+}
+
+.item-image-upload > input {
+  display: none;
+}
+
+/* Errors */
+
+.validation-error {
+  background-color: lightpink;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+/* Informational Message */
+
+.informational {
+  background-color: lightgoldenrodyellow;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  font-weight: bold;
+}
