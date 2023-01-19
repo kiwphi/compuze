@@ -12,7 +12,8 @@ const ForgotPasswordForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   // api call
-  const submitForgotRequest = async () => {
+  const submitForgotRequest = async (e) => {
+    e.preventDefault();
     setIsLoading(true);
     const json = await postRequest(`${process.env.NEXT_PUBLIC_API_URL}/auth/forgot`, { email: email });
     setIsLoading(false);
@@ -35,7 +36,7 @@ const ForgotPasswordForm = () => {
       {errors ? <ErrorList errors={errors} /> : ''}
 
       {/* form */}
-      <form className="form">
+      <form className="form" onSubmit={submitForgotRequest}>
         <div className="form-group">
           <label>Type your email address and well send you instructions on how to reset your password.</label>
           <input
@@ -53,7 +54,7 @@ const ForgotPasswordForm = () => {
         {isLoading ? (
           <span>Sending request...</span>
         ) : (
-          <button className="big-btn blue-btn" type="button" onClick={submitForgotRequest}>
+          <button className="big-btn blue-btn" type="submit" onClick={submitForgotRequest}>
             Send Reset Instructions
           </button>
         )}

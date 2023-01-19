@@ -16,7 +16,8 @@ const PostCommentForm = ({ setComments }) => {
   const { itemId } = router.query;
 
   // api call
-  const postComment = async () => {
+  const postComment = async (e) => {
+    e.preventDefault();
     setIsLoading(true);
     const json = await postRequest(`${process.env.NEXT_PUBLIC_API_URL}/comments`, {
       content: content,
@@ -27,13 +28,15 @@ const PostCommentForm = ({ setComments }) => {
     if (!json.success) {
       return setErrors(json.errors);
     }
+    setErrors(false); // done manually because below state changes don't trigger re-render
+
     setContent('');
     setComments((current) => [...current, json.data.comment]);
   };
 
   // render
   return (
-    <form>
+    <form onSubmit={postComment}>
       <label>Post a comment</label>
       {errors ? <ErrorList errors={errors} /> : ''}
       <input
@@ -49,7 +52,7 @@ const PostCommentForm = ({ setComments }) => {
       {isLoading ? (
         <span>Posting message...</span>
       ) : (
-        <button className="small-btn blue-btn" type="button" onClick={postComment}>
+        <button className="small-btn blue-btn" type="submit" onClick={postComment}>
           Post
         </button>
       )}
