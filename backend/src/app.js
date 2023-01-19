@@ -1,10 +1,9 @@
 // Main imports
 import express from 'express';
+import fs from 'fs';
 import dotenv from 'dotenv/config';
+import https from 'https';
 import cookieParser from 'cookie-parser';
-
-// HTTPS imports
-// import https from 'https';
 
 // Custom imports
 import { allowHeaders } from './middleware/handlers/headers-handler.js';
@@ -19,17 +18,6 @@ import { authRoutes } from './routes/auth-routes.js';
 import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-
-// HTTPS Certs
-// const privateKey = fs.readFileSync('/etc/letsencrypt/live/<domain>/privkey.pem', 'utf8');
-// const certificate = fs.readFileSync('/etc/letsencrypt/live/<domain>/cert.pem', 'utf8');
-// const ca = fs.readFileSync('/etc/letsencrypt/live/<domain>/chain.pem', 'utf8');
-
-// const credentials = {
-// 	key: privateKey,
-// 	cert: certificate,
-// 	ca: ca
-// };
 
 // Express
 const app = express();
@@ -59,10 +47,24 @@ app.use(errorInternal);
 
 // LISTEN-HTTP
 app.listen(process.env.APP_PORT, () => {
-    console.log(`Listening on port ${process.env.APP_PORT}`);
+    console.log(`Listening over HTTP on port ${process.env.APP_PORT}`);
 });
 
-// Listen-HTTPS
-// https.createServer(credentials, app).listen(process.env.APP_PORT, () => {
-//     console.log(`Listening on port ${process.env.APP_PORT}`);
-// });
+// LISTEN-HTTPS
+try {
+    const privateKey = fs.readFileSync('/etc/letsencrypt/live/DOMAIN.com/privkey.pem', 'utf8');
+    const certificate = fs.readFileSync('/etc/letsencrypt/live/DOMAIN.com/cert.pem', 'utf8');
+    const ca = fs.readFileSync('/etc/letsencrypt/live/DOMAIN.com/chain.pem', 'utf8');
+
+    const credentials = {
+        key: privateKey,
+        cert: certificate,
+        ca: ca,
+    };
+
+    https.createServer(credentials, app).listen(process.env.HTTPS_PORT, () => {
+        console.log(`Listening over HTTPS on port ${process.env.HTTPS_PORT}`);
+    });
+} catch (err) {
+    console.log('Not listening over HTTPS');
+}
