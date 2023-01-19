@@ -18,15 +18,16 @@ const LoginForm = () => {
   const { redirect, message } = router.query;
 
   // api call
-  const login = async () => {
+  const login = async (e) => {
+    e.preventDefault();
     setIsLoading(true);
     const json = await postRequest(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
       username: username,
       password: password,
     });
-    setIsLoading(false);
 
     if (!json.success) {
+      setIsLoading(false);
       return setErrors(json.errors);
     }
 
@@ -41,7 +42,7 @@ const LoginForm = () => {
       {/* informational messages */}
       {message ? <p className="informational"> {message} </p> : ''}
       {/* form */}
-      <form className="form">
+      <form className="form" onSubmit={login}>
         <div className="form-group">
           <label>Username</label>
           <input
@@ -69,7 +70,7 @@ const LoginForm = () => {
         {isLoading ? (
           <span>Logging in...</span>
         ) : (
-          <button className="big-btn blue-btn" type="button" onClick={login}>
+          <button className="big-btn blue-btn" type="submit">
             Login
           </button>
         )}

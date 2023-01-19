@@ -58,9 +58,9 @@ const EditItemForm = () => {
     formData.append('price', newPrice);
 
     const json = await putRequest(`${process.env.NEXT_PUBLIC_API_URL}/items/${itemId}`, formData);
-    setIsLoading(false);
 
     if (!json.success) {
+      setIsLoading(false);
       return setErrors(json.errors);
     }
     return router.replace(`/items/${itemId}`);

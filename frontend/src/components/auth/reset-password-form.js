@@ -25,9 +25,9 @@ const ResetPasswordForm = () => {
       token: token,
       userId: userId,
     });
-    setIsLoading(false);
 
     if (!json.success) {
+      setIsLoading(false);
       return setErrors(json.errors);
     }
 

@@ -27,9 +27,9 @@ const SendMessageForm = ({ json }) => {
       content: content,
       recipientUsername: recipientUsername,
     });
-    setIsLoading(false);
 
     if (!json.success) {
+      setIsLoading(false);
       return setErrors(json.errors);
     }
 

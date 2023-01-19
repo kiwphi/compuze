@@ -28,9 +28,9 @@ const SignupForm = () => {
       phone: phone,
       email: email,
     });
-    setIsLoading(false);
 
     if (!json.success) {
+      setIsLoading(false);
       return setErrors(json.errors);
     }
 

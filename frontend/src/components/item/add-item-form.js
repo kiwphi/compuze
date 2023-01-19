@@ -40,9 +40,9 @@ const AddItemForm = () => {
     });
 
     const json = await res.json();
-    setIsLoading(false);
 
     if (!json.success) {
+      setIsLoading(false);
       return setErrors(json.errors);
     }
     return router.replace('/items');
