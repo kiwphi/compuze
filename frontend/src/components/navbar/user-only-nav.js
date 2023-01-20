@@ -39,7 +39,7 @@ const UserOnlyNav = () => {
       </li>
 
       {/* My Profiles */}
-      <li className={router.pathname == '/users/[userId]' ? 'active' : ''}>
+      <li className={router.pathname == '/users/[userId]' && router.query.userId == authData.userId ? 'active' : ''}>
         <Link href={`/users/${authData.userId}`}>My Profile</Link>
       </li>
 
