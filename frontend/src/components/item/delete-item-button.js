@@ -20,13 +20,17 @@ const DeleteItemButton = ({ itemId }) => {
   };
 
   // render
+  if (isLoading) {
+    return <span>Deleting item...</span>;
+  }
+
   if (clicked) {
     return (
       <>
-        <button disabled={isLoading} className="small-btn pink-btn" onClick={deleteItem}>
+        <button className="small-btn pink-btn" onClick={deleteItem}>
           Confirm Delete
         </button>
-        <button disabled={isLoading} className="small-btn blue-btn" onClick={() => setClicked(false)}>
+        <button className="small-btn blue-btn" onClick={() => setClicked(false)}>
           Cancel
         </button>
       </>

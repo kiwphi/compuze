@@ -50,7 +50,7 @@ const PostCommentForm = ({ setComments }) => {
 
       {/* button */}
       {isLoading ? (
-        <span>Posting message...</span>
+        <span>Posting comment...</span>
       ) : (
         <button className="small-btn blue-btn" type="submit" onClick={postComment}>
           Post

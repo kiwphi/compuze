@@ -17,13 +17,17 @@ const DeleteCommentButton = ({ commentId, setComments }) => {
   };
 
   // render
+  if (isLoading) {
+    return <span>Deleting...</span>;
+  }
+
   if (clicked) {
     return (
       <>
-        <button disabled={isLoading} className="small-btn pink-btn" onClick={deleteComment}>
+        <button className="small-btn pink-btn" onClick={deleteComment}>
           Confirm Delete
         </button>
-        <button disabled={isLoading} className="small-btn blue-btn" onClick={() => setClicked(false)}>
+        <button className="small-btn blue-btn" onClick={() => setClicked(false)}>
           Cancel
         </button>
       </>

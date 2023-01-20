@@ -40,7 +40,7 @@ const ItemDetails = ({ json_item, json_comments }) => {
       <div className="item-details-buttons">
         {authData.username !== data.item.username ? (
           <Link href={`/users/${data.item.user_id}`}>
-            <button className="big-btn green-btn">Contact {data.item.username}</button>
+            <button className="big-btn green-btn">{data.item.username}'s profile</button>
           </Link>
         ) : (
           ''
