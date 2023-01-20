@@ -50,22 +50,23 @@ export class Item {
     }
 
     static async fetchPage({ type, search, sort, order, offset, perPage }) {
-        const itemCount = await db('items').count('id as count');
-        const itemChunk = await db('items').modify((qb) => {
-            if (type) {
-                qb.where({ type: type });
-            }
-            if (search) {
-                qb.where('brand', 'like', `%${search}%`);
-                qb.orWhere('model', 'like', `%${search}%`);
-                qb.orWhere('description', 'like', `%${search}%`);
-            }
-            if (sort) {
-                qb.orderBy(`items.${sort}`, order);
-            } else {
-                qb.orderBy(`items.created_at`, 'DESC');
-            }
-            qb.select(
+        const itemChunk = await db('items')
+            .modify((qb) => {
+                if (type) {
+                    qb.where({ type: type });
+                }
+                if (search) {
+                    qb.where('brand', 'like', `%${search}%`);
+                    qb.orWhere('model', 'like', `%${search}%`);
+                    qb.orWhere('description', 'like', `%${search}%`);
+                }
+                if (sort) {
+                    qb.orderBy(`items.${sort}`, order);
+                } else {
+                    qb.orderBy(`items.created_at`, 'DESC');
+                }
+            })
+            .select(
                 'items.id',
                 'items.type',
                 'items.brand',
@@ -76,12 +77,12 @@ export class Item {
                 'items.price',
                 'items.views',
                 'items.created_at',
-                'users.username'
-            );
-            qb.offset(offset);
-            qb.limit(perPage);
-            qb.join('users', 'users.id', 'items.user_id');
-        });
+                'users.username',
+                db.raw('count(*) OVER() AS count')
+            )
+            .offset(offset)
+            .limit(perPage)
+            .join('users', 'users.id', 'items.user_id');
 
         if (!itemChunk.length)
             return {
@@ -91,7 +92,7 @@ export class Item {
 
         return {
             itemChunk: itemChunk,
-            itemCount: itemCount[0].count,
+            itemCount: itemChunk[0].count,
         };
     }
 
