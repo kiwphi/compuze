@@ -78,6 +78,7 @@ export class Item {
                 'items.views',
                 'items.created_at',
                 'users.username',
+                // count number of rows before offset & limit
                 db.raw('count(*) OVER() AS count')
             )
             .offset(offset)
