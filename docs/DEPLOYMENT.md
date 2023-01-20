@@ -93,18 +93,19 @@ We add the standard user to a ssl-cert group and give that group permission to r
   `npm install pm2 -g`
 
 - Run the backend using PM2  
-  `pm2 start ./app.js`
+  `pm2 start ./app.js --name backend`
 
 - Built the frontend  
   `npm run build`
 
 - Run the frontend using PM2  
+  `pm2 start npm --name frontend -- run start`
 
 - Setup PM2 to run at startup in case of server reboot  
   `pm2 startup`  
   `pm2 save`
 
-#### 8- Fail2ban
+#### 7- Fail2ban
 
 Fail2Ban will automatically ban IP addresses of users who fail to login consecutively
 
