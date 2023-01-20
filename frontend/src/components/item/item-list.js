@@ -15,8 +15,8 @@ const ItemList = ({ json }) => {
   const [data, setData] = useState(json.data);
 
   // filters
-  const [order, setOrder] = useState('');
   const [sort, setSort] = useState('');
+  const [order, setOrder] = useState('');
   const [type, setType] = useState('');
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
