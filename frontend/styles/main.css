@@ -92,6 +92,39 @@ a {
   font-size: 1.75rem;
 }
 
+/* Item Skeleton */
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 80%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
+
+.skeleton-first-row {
+  border-radius: 0.3rem;
+  margin-bottom: 0.1rem;
+  height: 4em;
+}
+
+.skeleton-second-row {
+  border-radius: 0.3rem;
+  margin-bottom: 0.1rem;
+  height: 2.7em;
+}
+
+.skeleton-picture {
+  margin-right: 0.3rem;
+  border-radius: 0.7rem;
+  width: 6.7em;
+  height: 6.7em;
+}
+
 /* Comment Section */
 .comment-section {
   margin: 1rem;

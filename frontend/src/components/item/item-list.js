@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getRequest } from '../../util/api-requests';
+import ItemRowSkeleton from '../common/item-row-skeleton';
 import Loading from '../common/loading';
 import Pagination from '../common/pagination';
 import Filters from '../filter/filters';
@@ -76,23 +77,20 @@ const ItemList = ({ json }) => {
         />
 
         {isLoading ? (
-          <Loading />
+          Array(data.perPage).fill(<ItemRowSkeleton />)
+        ) : data && data.items.length ? (
+          data.items.map((item) => (
+            <Link key={item.id} href={`/items/${item.id}`}>
+              <a>
+                <ItemRow item={item} />
+              </a>
+            </Link>
+          ))
         ) : (
-          <>
-            {data && data.items.length ? (
-              data.items.map((item) => (
-                <Link key={item.id} href={`/items/${item.id}`}>
-                  <a>
-                    <ItemRow item={item} />
-                  </a>
-                </Link>
-              ))
-            ) : (
-              <p>No items found</p>
-            )}
-            <Pagination count={data && data.count} perPage={data && data.perPage} page={page} setPage={setPage} />
-          </>
+          <p>No items found</p>
         )}
+
+        <Pagination count={data && data.count} perPage={data && data.perPage} page={page} setPage={setPage} />
       </div>
     </>
   );
