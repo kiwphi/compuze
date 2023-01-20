@@ -28,9 +28,9 @@ export async function getItems(req, res, next) {
             success: true,
             message: 'Fetched items successfully',
             data: {
-                items: items.chunk,
+                items: items.itemChunk,
+                count: items.itemCount,
                 itemTypes: ITEM_TYPES,
-                count: items.count,
                 perPage: ITEMS_PER_PAGE,
             },
         });

@@ -50,7 +50,8 @@ export class Item {
     }
 
     static async fetchPage({ type, search, sort, order, offset, perPage }) {
-        const items = await db('items').modify((qb) => {
+        const itemCount = await db('items').count('id as count');
+        const itemChunk = await db('items').modify((qb) => {
             if (type) {
                 qb.where({ type: type });
             }
@@ -77,20 +78,20 @@ export class Item {
                 'items.created_at',
                 'users.username'
             );
+            qb.offset(offset);
+            qb.limit(perPage);
             qb.join('users', 'users.id', 'items.user_id');
         });
-        const itemsChunk = items.slice(offset, offset + perPage);
-        const itemsCount = items.length;
 
-        if (!itemsChunk.length)
+        if (!itemChunk.length)
             return {
-                chunk: [],
-                count: 0,
+                itemChunk: [],
+                itemCount: 0,
             };
 
         return {
-            chunk: itemsChunk,
-            count: itemsCount,
+            itemChunk: itemChunk,
+            itemCount: itemCount[0].count,
         };
     }
 
