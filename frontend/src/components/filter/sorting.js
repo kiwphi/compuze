@@ -1,14 +1,8 @@
 const Sorting = ({ sort, setSort, order, setOrder, setPage }) => {
-  // parameter = 'price' or 'created_at'
+  // parameter => 'price' or 'created_at'
   const sortItemsBy = (parameter) => {
     setSort(parameter);
     setOrder(order === 'ASC' ? 'DESC' : 'ASC');
-    setPage(1);
-  };
-
-  // value = 'ASC' or 'DESC'
-  const orderItems = (value) => {
-    setOrder(value);
     setPage(1);
   };
 

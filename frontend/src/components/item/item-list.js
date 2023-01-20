@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getRequest } from '../../util/api-requests';
 import ItemRowSkeleton from '../common/item-row-skeleton';
-import Loading from '../common/loading';
 import Pagination from '../common/pagination';
 import Filters from '../filter/filters';
 import ItemRow from './item-row';
