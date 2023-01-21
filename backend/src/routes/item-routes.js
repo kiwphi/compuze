@@ -5,6 +5,7 @@ import { deleteItem, putItem, getItem, getItems, postItem, patchViews } from '..
 import { checkAuth } from '../middleware/handlers/auth-handler.js';
 import { checkImage } from '../middleware/handlers/image-parser.js';
 import { resizeImage } from '../middleware/handlers/image-processor.js';
+import { trimBody } from '../middleware/handlers/trimmer.js';
 import { validateItem } from '../middleware/validators/item-validator.js';
 
 export const itemRoutes = express.Router();
@@ -12,8 +13,8 @@ export const itemRoutes = express.Router();
 itemRoutes.get('/', getItems);
 itemRoutes.get('/:itemId', getItem);
 
-itemRoutes.post('/', checkAuth, checkImage, resizeImage, validateItem, postItem);
-itemRoutes.put('/:itemId', checkAuth, checkImage, resizeImage, validateItem, putItem);
+itemRoutes.post('/', checkAuth, checkImage, resizeImage, trimBody, validateItem, postItem);
+itemRoutes.put('/:itemId', checkAuth, checkImage, resizeImage, trimBody, validateItem, putItem);
 
 itemRoutes.patch('/:itemId/views', patchViews);
 itemRoutes.delete('/:itemId', checkAuth, deleteItem);
