@@ -87,7 +87,12 @@ const SendMessageForm = ({ json }) => {
             >
               Discard
             </button>
-            <button className="big-btn blue-btn" type="button" onClick={postMessage} disabled={isLoading}>
+            <button
+              className="big-btn blue-btn"
+              type="button"
+              onClick={postMessage}
+              disabled={!(subject && content && recipientUsername)}
+            >
               Send
             </button>
           </>
