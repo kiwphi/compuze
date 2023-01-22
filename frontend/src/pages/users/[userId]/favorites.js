@@ -9,9 +9,7 @@ const Favorites = ({ json }) => {
       {json.data.favorites.length
         ? json.data.favorites.map((item) => (
             <Link key={item.id} href={`/items/${item.id}`}>
-              <a>
-                <ItemRow item={item} />
-              </a>
+              <ItemRow item={item} />
             </Link>
           ))
         : 'No favorites yet'}

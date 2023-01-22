@@ -35,9 +35,7 @@ const MessageList = () => {
         {messages &&
           messages.map((message) => (
             <Link key={message.id} href={`/messages/${message.id}`}>
-              <a>
-                <MessageTitleBar message={message} />
-              </a>
+              <MessageTitleBar message={message} />
             </Link>
           ))}
       </div>

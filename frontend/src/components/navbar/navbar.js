@@ -19,9 +19,7 @@ const Navbar = () => {
         {/* Title */}
         <li>
           <Link href="/">
-            <a>
-              <strong>Compuze | Buy & Sell</strong>
-            </a>
+            <strong>Compuze | Buy & Sell</strong>
           </Link>
         </li>
 

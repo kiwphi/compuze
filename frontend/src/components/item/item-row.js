@@ -4,16 +4,15 @@ import { epochToElapsed } from '../../util/helpers';
 const ItemRow = ({ item }) => {
   return (
     <div className="item-row">
-      <div className="item-picture">
+      <div className="item-image-container">
         <Image
+          className="item-image"
           src={
             item.image_src === 'default'
               ? '/default-image.png'
               : `${process.env.NEXT_PUBLIC_API_URL}/public/images/${item.image_src}`
           }
-          height="200"
-          width="200"
-          objectFit="cover"
+          fill
           alt="Image"
         />
       </div>

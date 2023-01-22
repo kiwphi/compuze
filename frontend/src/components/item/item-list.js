@@ -80,9 +80,7 @@ const ItemList = ({ json }) => {
         ) : data && data.items.length ? (
           data.items.map((item) => (
             <Link key={item.id} href={`/items/${item.id}`}>
-              <a>
-                <ItemRow item={item} />
-              </a>
+              <ItemRow item={item} />
             </Link>
           ))
         ) : (

@@ -18,7 +18,7 @@ const ImageSelector = ({ image, setImage, imageSrc, isLoading }) => {
     <>
       <div className="item-image-upload">
         <label htmlFor="image">
-          <Image alt="Item Image" layout="fill" objectFit="cover" src={getImageSrc()} />
+          <Image className="item-image" alt="Item Image" fill src={getImageSrc()} />
         </label>
         <input
           id="image"

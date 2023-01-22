@@ -79,9 +79,7 @@ const UserProfile = ({ jsonUser, jsonUserItems }) => {
             {userItems.map((item) => {
               return (
                 <Link key={item.id} href={`/items/${item.id}`}>
-                  <a>
-                    <ItemRow item={item} />
-                  </a>
+                  <ItemRow item={item} />
                 </Link>
               );
             })}

@@ -19,11 +19,7 @@ const InboxLink = () => {
   }, [router.pathname]);
 
   // render
-  return (
-    <Link href="/messages">
-      <a>Inbox {unreadCount > 0 && unreadCount ? `(${unreadCount})` : ''}</a>
-    </Link>
-  );
+  return <Link href="/messages">Inbox {unreadCount > 0 && unreadCount ? `(${unreadCount})` : ''}</Link>;
 };
 
 export default InboxLink;
