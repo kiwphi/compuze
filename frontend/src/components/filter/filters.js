@@ -3,10 +3,11 @@ import TypeSelector from './type-selector';
 import SearchBar from './search-bar';
 
 const Filters = ({ type, setType, order, setOrder, sort, setSort, setPage, search, setSearch }) => {
-  const removeFilters = () => {
+  const clearFilters = () => {
     setType('');
     setSort('');
     setOrder('');
+    setSearch('');
     setPage(1);
   };
 
@@ -29,10 +30,10 @@ const Filters = ({ type, setType, order, setOrder, sort, setSort, setPage, searc
           <Sorting sort={sort} setSort={setSort} order={order} setOrder={setOrder} setPage={setPage} />
         </div>
 
-        {/* remove filters */}
-        {type || sort || order ? (
-          <button className={'remove-filters-btn'} onClick={removeFilters}>
-            Remove Filters
+        {/* clear filters */}
+        {type || sort || order || search ? (
+          <button className={'clear-filters-btn'} onClick={clearFilters}>
+            Clear Filters
           </button>
         ) : (
           ''

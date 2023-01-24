@@ -2,6 +2,11 @@ import useItemTypes from '../../util/useItemTypes';
 
 const TypeSelector = ({ type, setType, setPage }) => {
   const handleType = (value) => {
+    // if clicking on an already selected type, de-select it
+    if (type === value) {
+      return setType('');
+    }
+
     setType(value);
     setPage(1);
   };

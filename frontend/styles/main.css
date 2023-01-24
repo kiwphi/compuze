@@ -177,7 +177,7 @@ a {
   width: 5.8rem;
 }
 
-.remove-filters-btn {
+.clear-filters-btn {
   background-color: lightpink;
   border-radius: 0.3rem;
   border: 1.5px solid black;
@@ -213,7 +213,7 @@ a {
 .big-btn:hover,
 .page-change-button:hover,
 .filter-select-btn:hover,
-.remove-filters-btn:hover,
+.clear-filters-btn:hover,
 .toggle-filters-btn:hover {
   background-color: lightgray;
 }
@@ -226,7 +226,7 @@ a {
 .big-btn:active,
 .page-change-button:active,
 .filter-select-btn:active,
-.remove-filters-btn:active,
+.clear-filters-btn:active,
 .toggle-filters-btn:active {
   background-color: lightsteelblue;
 }
