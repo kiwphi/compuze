@@ -361,6 +361,15 @@ a {
   background-color: lightgreen;
 }
 
+/* Inbox message-row skeleton */
+
+.message-row-skeleton {
+  padding: 0.5rem;
+  height: 1.3rem;
+  border-radius: 0.3rem;
+  margin-top: 0.3rem;
+}
+
 nav {
   display: flex;
   align-items: center;

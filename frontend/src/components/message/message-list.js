@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getRequest } from '../../util/api-requests';
-import Loading from '../common/loading';
 import MessageTitleBar from './message-title-bar';
 
 const MessageList = () => {
@@ -21,10 +20,6 @@ const MessageList = () => {
   }, []);
 
   // render
-  if (isLoading) {
-    return <Loading />;
-  }
-
   if (messages && !messages.length) {
     return 'No messages';
   }
@@ -32,12 +27,14 @@ const MessageList = () => {
   return (
     <>
       <div className="messages-section">
-        {messages &&
-          messages.map((message) => (
-            <Link key={message.id} href={`/messages/${message.id}`}>
-              <MessageTitleBar message={message} />
-            </Link>
-          ))}
+        {isLoading
+          ? Array(5).fill(<div className="skeleton message-row-skeleton" />)
+          : messages &&
+            messages.map((message) => (
+              <Link key={message.id} href={`/messages/${message.id}`}>
+                <MessageTitleBar message={message} />
+              </Link>
+            ))}
       </div>
     </>
   );
