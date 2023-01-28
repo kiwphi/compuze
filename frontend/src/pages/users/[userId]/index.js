@@ -22,6 +22,7 @@ export const getServerSideProps = async (context) => {
 
   return {
     props: {
+      key: jsonUser.data.user.id,
       jsonUser: jsonUser,
       jsonUserItems: jsonUserItems,
     },

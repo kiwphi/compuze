@@ -31,6 +31,7 @@ export const getServerSideProps = async (context) => {
 
   return {
     props: {
+      key: json_item.data.item.id,
       json_item: json_item,
       json_comments: json_comments,
     },
