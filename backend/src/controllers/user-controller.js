@@ -68,6 +68,7 @@ export async function patchUser(req, res, next) {
             userId: req.params.userId,
             phone: req.body.phone,
             email: req.body.email,
+            privacy: req.body.privacy,
             password: req.body.password,
         });
 

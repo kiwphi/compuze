@@ -89,6 +89,11 @@ export async function validateEdit(req, res, next) {
             req.errors.push('Passwords do not match');
         }
     }
+
+    if (req.body.privacy !== undefined && req.body.privacy !== true && req.body.privacy !== false) {
+        req.errors.push('Invalid privacy data submitted');
+    }
+
     next();
 }
 
