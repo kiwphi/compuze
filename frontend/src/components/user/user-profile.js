@@ -7,6 +7,7 @@ import ItemRow from '../item/item-row';
 import EditEmailButton from './edit-email-button';
 import EditPasswordButton from './edit-password-button';
 import EditPhoneButton from './edit-phone-button';
+import PrivacyCheckbox from './privacy-checkbox';
 
 const UserProfile = ({ jsonUser, jsonUserItems }) => {
   // data
@@ -64,6 +65,13 @@ const UserProfile = ({ jsonUser, jsonUserItems }) => {
           ) : (
             ''
           )}
+
+          {authData.isLoggedIn && authData.username === user.username ? (
+            <PrivacyCheckbox user={user} setErrors={setErrors} />
+          ) : (
+            ''
+          )}
+
           {authData.isLoggedIn && authData.username === user.username ? (
             <EditPasswordButton user={user} setErrors={setErrors} />
           ) : (
