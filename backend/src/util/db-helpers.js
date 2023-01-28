@@ -8,6 +8,7 @@ export async function initDatabase() {
             table.string('password');
             table.string('email');
             table.string('phone');
+            table.integer('privacy');
             table.string('created_at');
         });
     }

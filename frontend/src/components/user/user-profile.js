@@ -31,7 +31,7 @@ const UserProfile = ({ jsonUser, jsonUserItems }) => {
       <div className="user-details-section">
         <div className="user-details">
           <span>
-            Email: <strong>{email}</strong>
+            Email: {user.privacy && !authData.isLoggedIn ? <i>(Hidden)</i> : <strong>{email}</strong>}
             {authData.isLoggedIn && authData.username === user.username ? (
               <EditEmailButton user={user} setEmail={setEmail} setErrors={setErrors} />
             ) : (
@@ -41,7 +41,7 @@ const UserProfile = ({ jsonUser, jsonUserItems }) => {
 
           <div className="user-details-row-2">
             <span>
-              Phone: <strong>{phone}</strong>
+              Phone: {user.privacy && !authData.isLoggedIn ? <i>(Hidden)</i> : <strong>{phone}</strong>}
               {authData.isLoggedIn && authData.username === user.username ? (
                 <EditPhoneButton user={user} setPhone={setPhone} setErrors={setErrors} />
               ) : (

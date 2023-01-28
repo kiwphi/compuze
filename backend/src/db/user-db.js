@@ -6,6 +6,7 @@ export class User {
         this.password = password;
         this.email = email;
         this.phone = phone;
+        this.privacy = 0;
         this.createdAt = Date.now();
     }
 
@@ -15,6 +16,7 @@ export class User {
             password: this.password,
             email: this.email,
             phone: this.phone,
+            privacy: this.privacy,
             created_at: this.createdAt,
         });
     }
