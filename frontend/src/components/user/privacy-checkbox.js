@@ -20,10 +20,10 @@ const PrivacyCheckbox = ({ user, setErrors }) => {
 
   // render
   return (
-    <>
+    <span>
       <input checked={privacy} id="privacy" name="privacy" type="checkbox" onChange={togglePrivacy} />
       <label for="privacy">Keep my personal info private</label>
-    </>
+    </span>
   );
 };
 

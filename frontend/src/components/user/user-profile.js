@@ -67,13 +67,14 @@ const UserProfile = ({ jsonUser, jsonUserItems }) => {
           )}
 
           {authData.isLoggedIn && authData.username === user.username ? (
-            <PrivacyCheckbox user={user} setErrors={setErrors} />
+            <EditPasswordButton user={user} setErrors={setErrors} />
           ) : (
             ''
           )}
-
+        </div>
+        <div>
           {authData.isLoggedIn && authData.username === user.username ? (
-            <EditPasswordButton user={user} setErrors={setErrors} />
+            <PrivacyCheckbox user={user} setErrors={setErrors} />
           ) : (
             ''
           )}
