@@ -5,8 +5,6 @@ import SearchBar from './search-bar';
 const Filters = ({ type, setType, order, setOrder, sort, setSort, setPage, search, setSearch }) => {
   const clearFilters = () => {
     setType('');
-    setSort('');
-    setOrder('');
     setSearch('');
     setPage(1);
   };
@@ -31,7 +29,7 @@ const Filters = ({ type, setType, order, setOrder, sort, setSort, setPage, searc
         </div>
 
         {/* clear filters */}
-        {type || sort || order || search ? (
+        {type || search ? (
           <button className={'clear-filters-btn'} onClick={clearFilters}>
             Clear Filters
           </button>
