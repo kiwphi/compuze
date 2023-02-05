@@ -1,5 +1,6 @@
 import knex from 'knex';
 import { initDatabase } from './db-helpers.js';
+import { populateDatabase } from './db-populator.js';
 
 export const db = knex({
     client: 'mysql2',
@@ -11,4 +12,8 @@ export const db = knex({
     },
 });
 
-initDatabase();
+await initDatabase();
+
+if (parseInt(process.env.FAKE_DATA)) {
+    await populateDatabase();
+}
