@@ -6,20 +6,18 @@ session2='CODE'
 ##### SERVER SESSION
 tmux new-session -d -s $session1
 
-# DOCKER SERVER
+# DOCKER
 tmux rename-window -t 0 'docker'
 tmux send-keys -t $session1:0 'docker-compose -f mariadb.yaml up' C-m
 sleep 10
 
-# BACKEND SERVER
+# SERVERS
 tmux new-window -t $session1:1 -n 'backend'
 tmux send-keys -t $session1:1 'cd backend' C-m
 tmux send-keys -t $session1:1 'npm install && npm run dev' C-m
-
-# FRONTEND SERVER
-tmux new-window -t $session1:2 -n 'frontend'
-tmux send-keys -t $session1:2 'cd frontend' C-m
-tmux send-keys -t $session1:2 'npm install && npm run dev' C-m
+tmux split-window -h
+tmux send-keys -t $session1:1.1 'cd frontend' C-m
+tmux send-keys -t $session1:1.1 'npm install && npm run dev' C-m
 
 ##### CODE SESSION
 tmux new-session -d -s $session2
