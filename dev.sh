@@ -1,9 +1,9 @@
 #!/bin/bash
 
-session1='SERVER'
+session1='SERVERS'
 session2='CODE'
 
-##### SERVER SESSION
+##### SERVERS SESSION
 tmux new-session -d -s $session1
 
 # DOCKER
@@ -12,7 +12,7 @@ tmux send-keys -t $session1:0 'docker-compose -f mariadb.yaml up' C-m
 sleep 10
 
 # SERVERS
-tmux new-window -t $session1:1 -n 'backend'
+tmux new-window -t $session1:1 -n 'node/next'
 tmux send-keys -t $session1:1 'cd backend' C-m
 tmux send-keys -t $session1:1 'npm install && npm run dev' C-m
 tmux split-window -h
