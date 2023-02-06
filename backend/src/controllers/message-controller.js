@@ -1,8 +1,9 @@
 import {
     countUnreadMessages,
     createMessage,
+    findAllMessagesByRecipientId,
     findMessageById,
-    findMessagesByRecipientId,
+    findMessagePageByRecipientId,
     isRecipient,
     markAsRead,
     markAsUnread,
@@ -15,15 +16,16 @@ const MESSAGES_PER_PAGE = 5;
 // GET /messages
 export async function getMessages(req, res, next) {
     try {
-        const messages = await findMessagesByRecipientId(req.user, req.query.page, MESSAGES_PER_PAGE);
-        const unreadCount = countUnreadMessages(messages);
+        const messages = await findMessagePageByRecipientId(req.user.id, req.query.page, MESSAGES_PER_PAGE);
+        const allMessages = await findAllMessagesByRecipientId(req.user.id);
+        const unreadCount = countUnreadMessages(allMessages);
 
         return res.status(200).json({
             success: true,
             message: 'Messages fetched successfully',
             data: {
-                messages: messages,
-                count: 15, // change
+                messages: messages.messageChunk,
+                count: messages.messageCount,
                 unreadCount: unreadCount,
                 perPage: MESSAGES_PER_PAGE,
             },

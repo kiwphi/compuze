@@ -30,6 +30,9 @@ const MessageList = () => {
 
   return (
     <>
+      <Link href={`/messages/send`}>
+        <button className="big-btn green-btn">Compose</button>
+      </Link>
       <div className="messages-section">
         {isLoading
           ? Array(5).fill(<div className="skeleton message-row-skeleton" />)

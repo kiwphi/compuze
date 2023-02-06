@@ -53,7 +53,7 @@ export class Message {
     }
 
     static async fetchPageByRecipientId(recipientId, offset, perPage) {
-        const messages = await db('messages')
+        const messageChunk = await db('messages')
             .select(
                 'messages.id',
                 'messages.subject',
@@ -74,6 +74,20 @@ export class Message {
             .join('users as stable', 'stable.id', 'messages.sender_id')
             .join('users as rtable', 'rtable.id', 'messages.recipient_id');
 
+        if (!messageChunk.length) {
+            return {
+                messageChunk: [],
+                messageCount: 0,
+            };
+        }
+        return {
+            messageChunk: messageChunk,
+            messageCount: messageChunk[0].count,
+        };
+    }
+
+    static async fetchAllByRecipientId(recipientId) {
+        const messages = await db('messages').where({ recipient_id: recipientId });
         if (!messages.length) return [];
         return messages;
     }
