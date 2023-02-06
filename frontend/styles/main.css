@@ -28,6 +28,7 @@ a {
   margin: 0.5rem 0 0.5rem 0;
   background-color: lightsteelblue;
   border-radius: 0.3rem;
+  text-underline-offset: 0.2rem;
 }
 
 #navigation ul {
@@ -40,8 +41,13 @@ a {
   list-style: none;
 }
 
-#navigation .active {
-  font-weight: bold;
+#navigation li:hover,
+.active {
+  text-decoration: underline overline;
+}
+
+#navigation li:active {
+  color: white;
 }
 
 /* Item Details */
