@@ -57,10 +57,6 @@ export async function replaceItem({ itemId, type, brand, model, description, loc
     }
 }
 
-export async function isUserLimitReached(userId) {
-    return false;
-}
-
 export async function removeItemById(itemId) {
     await Item.deleteById(itemId);
 }

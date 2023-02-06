@@ -7,11 +7,11 @@ import {
     findItemById,
     findItemsByUserId,
     removeItemById,
-    isUserLimitReached,
 } from '../services/item-service.js';
 import { ITEM_TYPES } from '../util/constants.js';
 
 const ITEMS_PER_PAGE = 10;
+const ITEM_LIMIT_PER_USER = 15;
 
 // GET /items
 export async function getItems(req, res, next) {
@@ -89,7 +89,9 @@ export async function postItem(req, res, next) {
             });
         }
 
-        if (isUserLimitReached(req.user.id)) {
+        const userItems = await findItemsByUserId(req.user.id);
+
+        if (userItems.length >= ITEM_LIMIT_PER_USER) {
             return res.status(403).json({
                 success: false,
                 message: 'Failed to post item',
