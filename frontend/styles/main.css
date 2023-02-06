@@ -42,7 +42,7 @@ a {
 }
 
 #navigation li:hover,
-.active {
+#navigation .active {
   text-decoration: underline overline;
 }
 
