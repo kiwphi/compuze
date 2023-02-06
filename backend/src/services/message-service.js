@@ -1,7 +1,10 @@
 import { Message } from '../db/message-db.js';
 
-export async function findMessagesByRecipientId(recipient) {
-    return await Message.fetchByRecipientId(recipient.id);
+export async function findMessagesByRecipientId(recipient, page, perPage) {
+    const currentPage = page || 1;
+    const offset = (currentPage - 1) * perPage;
+
+    return await Message.fetchPageByRecipientId(recipient.id, offset, perPage);
 }
 
 export async function findMessageById(messageId) {

@@ -10,10 +10,12 @@ import {
 } from '../services/message-service.js';
 import { findUserByUsername } from '../services/user-service.js';
 
+const MESSAGES_PER_PAGE = 5;
+
 // GET /messages
 export async function getMessages(req, res, next) {
     try {
-        const messages = await findMessagesByRecipientId(req.user);
+        const messages = await findMessagesByRecipientId(req.user, req.query.page, MESSAGES_PER_PAGE);
         const unreadCount = countUnreadMessages(messages);
 
         return res.status(200).json({
@@ -21,7 +23,9 @@ export async function getMessages(req, res, next) {
             message: 'Messages fetched successfully',
             data: {
                 messages: messages,
+                count: 15, // change
                 unreadCount: unreadCount,
+                perPage: MESSAGES_PER_PAGE,
             },
         });
     } catch (err) {

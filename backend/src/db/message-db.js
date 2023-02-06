@@ -52,7 +52,7 @@ export class Message {
         return messages[0];
     }
 
-    static async fetchByRecipientId(recipientId) {
+    static async fetchPageByRecipientId(recipientId, offset, perPage) {
         const messages = await db('messages')
             .select(
                 'messages.id',
@@ -63,8 +63,12 @@ export class Message {
                 'stable.username AS sender',
                 'rtable.username AS recipient',
                 'rtable.id as recipient_id',
-                'stable.id AS sender_id'
+                'stable.id AS sender_id',
+                // count number of rows before offset & limit
+                db.raw('count(*) OVER() AS count')
             )
+            .offset(offset)
+            .limit(perPage)
             .where({ recipient_id: recipientId })
             .orderBy('messages.created_at', 'DESC')
             .join('users as stable', 'stable.id', 'messages.sender_id')
