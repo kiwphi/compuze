@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { postRequest } from '../../util/api-requests';
 import ErrorList from '../common/error-list';
 
-const PostCommentForm = ({ setComments }) => {
+const PostCommentForm = ({ updateComments }) => {
   // form data
   const [content, setContent] = useState('');
 
@@ -31,7 +31,7 @@ const PostCommentForm = ({ setComments }) => {
     setErrors(false); // done manually because below state changes don't trigger re-render
 
     setContent('');
-    setComments((current) => [...current, json.data.comment]);
+    updateComments();
   };
 
   // render

@@ -2,7 +2,9 @@ import { Comment } from '../db/comment-db.js';
 
 export async function findComments(itemId) {
     const comments = await Comment.fetchByItemId(itemId);
-    tagLastComment(comments);
+    if (comments.length) {
+        tagLastComment(comments);
+    }
     return comments;
 }
 

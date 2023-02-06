@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { deleteRequest } from '../../util/api-requests';
 
-const DeleteCommentButton = ({ commentId, setComments }) => {
+const DeleteCommentButton = ({ commentId, updateComments }) => {
   // button state
   const [clicked, setClicked] = useState(false);
 
@@ -13,7 +13,7 @@ const DeleteCommentButton = ({ commentId, setComments }) => {
     setIsLoading(true);
     await deleteRequest(`${process.env.NEXT_PUBLIC_API_URL}/comments/${commentId}`);
     setIsLoading(false);
-    setComments((current) => [...current.filter((comment) => comment.id !== commentId)]);
+    updateComments();
   };
 
   // render
