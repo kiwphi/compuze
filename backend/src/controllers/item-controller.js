@@ -7,6 +7,7 @@ import {
     findItemById,
     findItemsByUserId,
     removeItemById,
+    isUserLimitReached,
 } from '../services/item-service.js';
 import { ITEM_TYPES } from '../util/constants.js';
 
@@ -85,6 +86,14 @@ export async function postItem(req, res, next) {
                 success: false,
                 message: 'Failed to post item',
                 errors: req.errors,
+            });
+        }
+
+        if (isUserLimitReached(req.user.id)) {
+            return res.status(403).json({
+                success: false,
+                message: 'Failed to post item',
+                errors: ['You have reached your maximum item posting limit'],
             });
         }
 
