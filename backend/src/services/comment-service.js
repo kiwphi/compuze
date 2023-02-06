@@ -16,7 +16,7 @@ export async function tagLastComment(comments) {
 
 export async function isCommentLast(comment) {
     const comments = await Comment.fetchByItemId(comment.item_id);
-    const lastCommentId = comments[comments.length - 1];
+    const lastCommentId = comments[comments.length - 1].id;
     return lastCommentId === comment.id;
 }
 

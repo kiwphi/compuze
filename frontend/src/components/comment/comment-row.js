@@ -18,7 +18,7 @@ const CommentRow = (props) => {
       </span>
 
       <span className="comment-row-right">
-        {authData.username === comment.username ? props.children : ''}
+        {authData.username === comment.username && comment.last ? props.children : ''}
         <span>{epochToElapsed(comment.created_at)}</span>
       </span>
     </div>
