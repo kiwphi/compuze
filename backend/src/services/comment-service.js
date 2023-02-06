@@ -1,7 +1,12 @@
 import { Comment } from '../db/comment-db.js';
 
 export async function findComments(itemId) {
-    return await Comment.fetchByItemId(itemId);
+    const comments = await Comment.fetchByItemId(itemId);
+
+    // Assign 'last' property to last comment in chain
+    comments[comments.length - 1].last = true;
+
+    return comments;
 }
 
 export async function findCommentById(commentId) {
