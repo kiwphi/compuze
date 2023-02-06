@@ -28,7 +28,7 @@ a {
   margin: 0.5rem 0 0.5rem 0;
   background-color: lightsteelblue;
   border-radius: 0.3rem;
-  text-underline-offset: 0.2rem;
+  text-underline-offset: 0.6rem;
 }
 
 #navigation ul {
@@ -43,11 +43,7 @@ a {
 
 #navigation li:hover,
 #navigation .active {
-  text-decoration: underline overline;
-}
-
-#navigation li:active {
-  color: white;
+  text-decoration: underline;
 }
 
 /* Item Details */
@@ -472,7 +468,7 @@ input {
 
 .message-row-skeleton {
   padding: 0.5rem;
-  height: 1.3rem;
+  height: 1.2rem;
   border-radius: 0.3rem;
   margin-top: 0.3rem;
 }

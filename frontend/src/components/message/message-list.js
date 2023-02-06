@@ -17,6 +17,7 @@ const MessageList = () => {
   // api call - fetch messages
   useEffect(() => {
     (async () => {
+      setIsLoading(true);
       const json = await getRequest(`${process.env.NEXT_PUBLIC_API_URL}/messages?page=${page}`);
       setData(json.data);
       setIsLoading(false);
@@ -35,7 +36,7 @@ const MessageList = () => {
       </Link>
       <div className="messages-section">
         {isLoading
-          ? Array(5).fill(<div className="skeleton message-row-skeleton" />)
+          ? Array(data && data.perPage).fill(<div className="skeleton message-row-skeleton" />)
           : data &&
             data.messages.map((message) => (
               <Link key={message.id} href={`/messages/${message.id}`}>
@@ -43,7 +44,17 @@ const MessageList = () => {
               </Link>
             ))}
       </div>
-      <Pagination count={data && data.count} perPage={data && data.perPage} page={page} setPage={setPage} />
+      {data && data.count > data.perPage ? (
+        <Pagination
+          count={data && data.count}
+          perPage={data && data.perPage}
+          page={page}
+          setPage={setPage}
+          isLoading={isLoading}
+        />
+      ) : (
+        ''
+      )}
     </>
   );
 };

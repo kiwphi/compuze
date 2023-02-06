@@ -1,4 +1,4 @@
-const Pagination = ({ count, perPage, page, setPage }) => {
+const Pagination = ({ count, perPage, page, setPage, isLoading }) => {
   const prevPage = () => {
     setPage(page - 1);
   };
@@ -10,7 +10,7 @@ const Pagination = ({ count, perPage, page, setPage }) => {
   return (
     <div className="pagination">
       {/* previous button */}
-      <button className={`page-change-button ${page === 1 ? 'invisible' : ''}`} onClick={prevPage}>
+      <button disabled={isLoading} className={`page-change-button ${page === 1 ? 'invisible' : ''}`} onClick={prevPage}>
         &lt;
       </button>
 
@@ -18,7 +18,11 @@ const Pagination = ({ count, perPage, page, setPage }) => {
       {count ? <span className="page-number">Page {page}</span> : ''}
 
       {/* next button */}
-      <button className={`page-change-button ${page * perPage >= count ? 'invisible' : ''}`} onClick={nextPage}>
+      <button
+        disabled={isLoading}
+        className={`page-change-button ${page * perPage >= count ? 'invisible' : ''}`}
+        onClick={nextPage}
+      >
         &gt;
       </button>
     </div>

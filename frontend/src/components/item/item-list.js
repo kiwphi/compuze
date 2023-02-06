@@ -87,7 +87,13 @@ const ItemList = ({ json }) => {
           <p>No items found</p>
         )}
 
-        <Pagination count={data && data.count} perPage={data && data.perPage} page={page} setPage={setPage} />
+        <Pagination
+          count={data && data.count}
+          perPage={data && data.perPage}
+          page={page}
+          setPage={setPage}
+          isLoading={isLoading}
+        />
       </div>
     </>
   );
