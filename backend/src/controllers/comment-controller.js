@@ -3,6 +3,7 @@ import {
     findCommentById,
     findComments,
     isAuthorOfComment,
+    isCommentLast,
     removeCommentById,
 } from '../services/comment-service.js';
 import { findItemById } from '../services/item-service.js';
@@ -95,6 +96,13 @@ export async function deleteComment(req, res, next) {
 
         if (!comment) {
             return next();
+        }
+
+        if (!(await isCommentLast(comment))) {
+            return res.status(403).json({
+                success: false,
+                message: 'Only authorized to delete last comment',
+            });
         }
 
         if (!isAuthorOfComment(req.user, comment)) {

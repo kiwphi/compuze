@@ -23,7 +23,14 @@ export class Comment {
 
     static async fetchByItemId(itemId) {
         const comments = await db('comments')
-            .select('comments.id', 'comments.content', 'comments.created_at', 'comments.user_id', 'users.username')
+            .select(
+                'comments.id',
+                'comments.content',
+                'comments.created_at',
+                'comments.user_id',
+                'comments.item_id',
+                'users.username'
+            )
             .where({ 'comments.item_id': itemId })
             .join('users', 'users.id', 'comments.user_id');
 
@@ -33,7 +40,14 @@ export class Comment {
 
     static async fetchById(commentId) {
         const comments = await db('comments')
-            .select('comments.id', 'comments.content', 'comments.created_at', 'comments.user_id', 'users.username')
+            .select(
+                'comments.id',
+                'comments.content',
+                'comments.created_at',
+                'comments.user_id',
+                'comments.item_id',
+                'users.username'
+            )
             .where({ 'comments.id': commentId })
             .join('users', 'users.id', 'comments.user_id');
 
