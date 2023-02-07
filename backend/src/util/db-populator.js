@@ -7,18 +7,12 @@ export async function populateDatabase() {
     const items = await db('items');
 
     if (!items.length) {
-        await createUsers();
-        await createItems();
-    }
-}
+        for (const user of FAKE_USERS) {
+            await createUser(user);
+        }
 
-async function createUsers() {
-    FAKE_USERS.forEach(async (user) => {
-        await createUser(user);
-    });
-}
-async function createItems() {
-    FAKE_ITEMS.forEach(async (item) => {
-        await createItem(item);
-    });
+        for (const item of FAKE_ITEMS) {
+            await createItem(item);
+        }
+    }
 }

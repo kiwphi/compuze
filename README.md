@@ -15,7 +15,7 @@ A platform to facilitate buying and selling used computer parts
 - Edit the environment variables in the .env files
 - Install dependencies & run dev servers in both ./backend & ./frontend directories: `npm install && npm run dev`
 - By default, the frontend will be served at localhost:3000 and the backend at localhost:5500
-- The database will be populated with fake data for development purposes, as well as a user: `username: compuze, password: 123123oO`
+- During development, the db will be filled with fake items & 2 users: `seller1, pass: 123123oO` `seller2, pass: 123123oO`
 
 ### Running the development environment using the provided script
 

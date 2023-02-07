@@ -1,12 +1,12 @@
 export const FAKE_USERS = [
     {
-        username: 'compuze',
+        username: 'seller1',
         password: '123123oO',
         email: 'compuze@compuze.com',
         phone: 71717171,
     },
     {
-        username: 'seller',
+        username: 'seller2',
         password: '123123oO',
         email: 'seller@seller.com',
         phone: 70707070,
