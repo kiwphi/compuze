@@ -9,6 +9,7 @@ export async function initDatabase() {
             table.string('email');
             table.string('phone');
             table.boolean('privacy');
+            table.string('last_msg_sent');
             table.string('created_at');
         });
     }

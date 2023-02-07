@@ -4,14 +4,17 @@ import {
     findAllMessagesByRecipientId,
     findMessageById,
     findMessagePageByRecipientId,
+    getElapsedSecondsSinceLastMessage,
     isRecipient,
     markAsRead,
     markAsUnread,
+    markSentMessageTimestamp,
     removeMessageById,
 } from '../services/message-service.js';
 import { findUserByUsername } from '../services/user-service.js';
 
 const MESSAGES_PER_PAGE = 5;
+const SENDING_INTERVAL = 15; // how many seconds to wait between each message sent
 
 // GET /messages
 export async function getMessages(req, res, next) {
@@ -74,6 +77,13 @@ export async function postMessage(req, res, next) {
             });
         }
 
+        if ((await getElapsedSecondsSinceLastMessage(req.user.id)) < SENDING_INTERVAL) {
+            return res.status(422).json({
+                success: false,
+                message: 'Unable to send message',
+                errors: ['Please allow some time before sending another message'],
+            });
+        }
         const recipient = await findUserByUsername(req.body.recipientUsername);
 
         const messageId = await createMessage({
@@ -82,6 +92,8 @@ export async function postMessage(req, res, next) {
             senderId: req.user.id,
             recipientId: recipient.id,
         });
+
+        markSentMessageTimestamp(req.user.id);
 
         const message = await findMessageById(messageId);
 

@@ -7,6 +7,7 @@ export class User {
         this.email = email;
         this.phone = phone;
         this.privacy = 0;
+        this.last_msg_sent = Date.now();
         this.createdAt = Date.now();
     }
 
@@ -17,6 +18,7 @@ export class User {
             email: this.email,
             phone: this.phone,
             privacy: this.privacy,
+            last_msg_sent: this.last_msg_sent,
             created_at: this.createdAt,
         });
     }

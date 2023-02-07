@@ -1,4 +1,5 @@
 import { Message } from '../db/message-db.js';
+import { User } from '../db/user-db.js';
 
 export async function findMessagePageByRecipientId(recipientId, page, perPage) {
     const currentPage = page || 1;
@@ -52,6 +53,23 @@ export async function markAsUnread(message) {
             value: 0,
         });
     }
+}
+
+export async function markSentMessageTimestamp(userId) {
+    await User.editField({
+        userId: userId,
+        field: 'last_msg_sent',
+        value: Date.now(),
+    });
+}
+
+export async function getElapsedSecondsSinceLastMessage(userId) {
+    const user = await User.fetchById(userId);
+
+    const nowInSeconds = Date.now() / 1000;
+    const lastMsgInSeconds = user.last_msg_sent / 1000;
+
+    return Math.floor(nowInSeconds - lastMsgInSeconds);
 }
 
 export function countUnreadMessages(messages) {
