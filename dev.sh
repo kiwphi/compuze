@@ -10,6 +10,8 @@ tmux new-session -d -s $session1
 tmux rename-window -t 0 'docker'
 tmux send-keys -t $session1:0 'docker-compose -f mariadb.yaml up' C-m
 sleep 10
+tmux split-window -h
+tmux send-keys -t $session1:0.1 'docker exec -it mariadb_compuze /bin/bash' C-m
 
 # SERVERS
 tmux new-window -t $session1:1 -n 'node/next'
