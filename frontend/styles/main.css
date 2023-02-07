@@ -297,6 +297,10 @@ a {
 
 /* Inbox - Messages */
 
+.compose-button-wrapper {
+  margin: 1rem;
+}
+
 .messages-section {
   margin: 1rem;
 }

@@ -26,14 +26,11 @@ const MessageList = () => {
 
   // render
   if (data && !data.messages.length) {
-    return 'No messages';
+    return <div className="messages-section">You don't have any messages</div>;
   }
 
   return (
     <>
-      <Link href={`/messages/send`}>
-        <button className="big-btn green-btn">Compose</button>
-      </Link>
       <div className="messages-section">
         {isLoading
           ? Array(data && data.perPage).fill(<div className="skeleton message-row-skeleton" />)
