@@ -12,32 +12,21 @@ const RecipientTextbox = ({ json, recipientUsername, setRecipientUsername, isLoa
     setRecipientUsername(e);
   };
 
-  // handle clicking on a suggestion
-  const handleClick = (username) => {
-    setRecipientUsername(username);
-    setSuggestions([]);
-  };
-
   // render
   return (
     <>
       <input
-        type="text"
+        list="usernames"
         id="recipientUsername"
         value={recipientUsername}
-        maxLength="30"
         onChange={(e) => filterResults(e.target.value)}
         disabled={isLoading}
       />
-      <nav>
+      <datalist id="usernames">
         {suggestions.map((username, i) => {
-          return (
-            <a href="#" onClick={() => handleClick(username)} key={i}>
-              {username}
-            </a>
-          );
+          return <option value={username} key={i} />;
         })}
-      </nav>
+      </datalist>
     </>
   );
 };
