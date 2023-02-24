@@ -1,4 +1,4 @@
-# Compuze
+<img src="repo/banner.png" alt="banner">
 
 A platform to facilitate buying and selling used computer parts
 
@@ -27,19 +27,19 @@ A platform to facilitate buying and selling used computer parts
 
 ### Documentation
 
-- The [API Documentation](https://github.com/kiwphi/compuze/blob/master/docs/API.md) has information about the API's endpoints
-- A basic linux [deployment guide](https://github.com/kiwphi/compuze/blob/master/docs/DEPLOYMENT.md)
+- The [API Documentation](https://github.com/kiwphi/compuze/blob/main/docs/API.md) has information about the API's endpoints
+- A basic linux [deployment guide](https://github.com/kiwphi/compuze/blob/main/docs/DEPLOYMENT.md)
 
 ### Screenshots
 
 #### Viewing a single item
 
-<img src="docs/screenshot1.png" alt="screenshot1">
+<img src="repo/screenshot1.png" alt="screenshot1">
 
 #### Browsing items with some filters on
 
-<img src="docs/screenshot2.png" alt="screenshot2">
+<img src="repo/screenshot2.png" alt="screenshot2">
 
 #### Inbox
 
-<img src="docs/screenshot3.png" alt="screenshot3">
+<img src="repo/screenshot3.png" alt="screenshot3">
