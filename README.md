@@ -27,8 +27,8 @@ A platform to facilitate buying and selling used computer parts
 
 ### Documentation
 
-- The <a href="https://github.com/kiwphi/compuze/blob/master/docs/API.md">API Documentation</a> has information about the API's endpoints
-- A basic linux <a href="https://github.com/kiwphi/compuze/blob/master/docs/DEPLOYMENT.md">deployment guide</a>
+- The [API Documentation](https://github.com/kiwphi/compuze/blob/master/docs/API.md) has information about the API's endpoints
+- A basic linux [deployment guide](https://github.com/kiwphi/compuze/blob/master/docs/DEPLOYMENT.md)
 
 ### Screenshots
 
