@@ -1,4 +1,4 @@
-<img src="repo/banner.png" alt="banner">
+<img src="repo/banner.png" alt="banner" width="450" height="93">
 
 A platform to facilitate buying and selling used computer parts
 
